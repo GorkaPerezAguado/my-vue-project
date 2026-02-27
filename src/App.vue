@@ -1,85 +1,52 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+const courses = [
+  { id: 1, name: 'Vue.js Fundamentals', url: 'https://escuela.it/vue-fundamentals' },
+  { id: 2, name: 'Advanced Vue Patterns', url: 'https://escuela.it/vue-advanced' },
+  { id: 3, name: 'Pinia State Management', url: 'https://escuela.it/pinia' },
+  { id: 4, name: 'Vue Router Deep Dive', url: 'https://escuela.it/vue-router' },
+  { id: 5, name: 'Testing Vue Apps', url: 'https://escuela.it/vue-testing' },
+  { id: 6, name: 'Vite for Vue', url: 'https://escuela.it/vite-vue' },
+  { id: 7, name: 'Cypress E2E Testing', url: 'https://escuela.it/cypress' },
+  { id: 8, name: 'ESLint & Prettier', url: 'https://escuela.it/eslint-prettier' },
+  { id: 9, name: 'Vue Animations', url: 'https://escuela.it/vue-animations' },
+  { id: 10, name: 'Vue 3 Composition API', url: 'https://escuela.it/vue3-composition' },
+]
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div class="flex flex-col gap-8">
+    <header>
+      <a href="#" class="btn btn-primary mr-2">Cursos</a>
+      <a href="#" class="btn btn-secondary">Nuevo Curso</a>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+    <div class="overflow-x-auto">
+      <table
+        class="table table-zebra table-compact w-full rounded-box shadow border border-base-300"
+      >
+        <thead class="bg-base-200">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="course in courses"
+            :key="course.id"
+            :class="course.id === 2 ? 'hover:bg-base-300' : ''"
+          >
+            <td class="px-4 py-2 whitespace-nowrap">{{ course.id }}</td>
+            <td class="px-4 py-2 whitespace-nowrap">{{ course.name }}</td>
+            <td class="px-4 py-2 whitespace-nowrap">
+              <a :href="course.url" class="btn btn-sm btn-primary" target="_blank" rel="noopener"
+                >Ver curso</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
