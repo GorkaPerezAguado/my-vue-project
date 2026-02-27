@@ -84,11 +84,7 @@ const addCourse = () => {
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="course in courses"
-            :key="course.id"
-            :class="course.id === 2 ? 'hover:bg-base-300' : ''"
-          >
+          <tr v-for="course in courses" :key="course.id" class="hover:bg-base-300">
             <td class="px-4 py-2 whitespace-nowrap">{{ course.id }}</td>
             <td class="px-4 py-2 whitespace-nowrap">{{ course.name }}</td>
             <td class="px-4 py-2 whitespace-nowrap">
