@@ -1,15 +1,11 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <section class="card bg-base-100 border border-base-300 shadow">
+    <div class="card-body">
+      <h1 class="card-title text-2xl">About</h1>
+      <p>
+        Esta vista existe para demostrar navegacion por rutas y separacion entre layout global,
+        paginas y componentes reutilizables.
+      </p>
+    </div>
+  </section>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
